@@ -1,0 +1,4 @@
+{"kind":"run","run_id":"A","steps":["refund_42"],"destructive":["refund_42"],"max_retries":2,"budget":3,"key_mode":"step","on_approval_timeout":"abort","budget_scope":"run"}
+{"event":"Grant","step":"refund_42"}
+{"event":"Call","step":"refund_42","attempt":1}
+{"event":"Ack","step":"refund_42","effects":1}

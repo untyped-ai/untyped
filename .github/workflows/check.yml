@@ -1,0 +1,18 @@
+name: check
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: verify pinned tools
+        run: |
+          echo "b490f45c1de08e4ff9753259a00338981b9cf464f01ca9e9cd5f19f33cf0bb92  tools/tla2tools.jar" | sha256sum -c
+          echo "3d9a282c360e90d55e9bbe99caa2987d508fef1556d652760b4af4455e283733  tools/CommunityModules-deps.jar" | sha256sum -c
+      - run: make all
